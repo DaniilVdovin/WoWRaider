@@ -29,7 +29,7 @@ public class API {
     static String
             ROOT = "https://raider.io",
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
-            CHARACTER_FIELDS="&fields=gear,mythic_plus_scores,previous_mythic_plus_scores";
+            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores";
 
     static Character character;
 

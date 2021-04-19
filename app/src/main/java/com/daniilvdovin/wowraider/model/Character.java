@@ -30,4 +30,5 @@ public class Character extends JSONObject {
     public  DungeonRun[]
             mythic_plus_recent_runs,
             mythic_plus_best_runs;
+    public Covenant covenant;
 }
