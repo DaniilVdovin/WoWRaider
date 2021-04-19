@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity{
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                String[] qr;
+                String[] qr = new String[3];
 
                 if(query.contains("/"))
                     qr =  query.split("/");
