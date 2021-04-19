@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         Intent characterViewer = new Intent(this,CharacterViewer.class);
-        characterViewer.putExtra("request", new String[]{"eu", "Gordunni", "Бранзубрут"});
+        characterViewer.putExtra("request", new String[]{"eu", "Gordunni", "Эйлисанда"});
         startActivity(characterViewer);
     }
 }

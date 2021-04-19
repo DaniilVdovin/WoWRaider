@@ -1,7 +1,7 @@
 package com.daniilvdovin.wowraider.model;
 
 class MythicPlusScores {
-    Integer
+    Double
             all,
             dps,
             healer,

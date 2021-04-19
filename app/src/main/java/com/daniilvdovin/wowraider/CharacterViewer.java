@@ -26,7 +26,8 @@ public class CharacterViewer extends AppCompatActivity {
                 name = findViewById(R.id.tv_name),
                 race = findViewById(R.id.tv_race),
                 class_cpec = findViewById(R.id.tv_class_spec_name),
-                itemlvl = findViewById(R.id.tv_itemlvl);
+                itemlvl = findViewById(R.id.tv_itemlvl),
+                covenant = findViewById(R.id.tv_covenant);
         RecyclerView dnm_gear = findViewById(R.id.dnm_gear);
         RecyclerView.LayoutManager GridLayoutManager = new GridLayoutManager(this,8);
         dnm_gear.setLayoutManager(GridLayoutManager);
@@ -40,7 +41,11 @@ public class CharacterViewer extends AppCompatActivity {
             name.setText(character.name);
             race.setText(character.race);
             class_cpec.setText(String.format("%s/%s (%s)",character.classc,character.active_spec_name,character.active_spec_role));
-
+            if(character.covenant != null){
+                covenant.setText(String.format("%s Renown %s",character.covenant.name,character.covenant.renown_level));
+            }else {
+                covenant.setVisibility(View.GONE);
+            }
             if(character.gear!=null){
                 if(character.gear.item_level_total!=null)
                     itemlvl.setText(String.format("%s Item Level",character.gear.item_level_equipped));

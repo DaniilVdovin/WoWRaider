@@ -66,6 +66,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final GearItem data = Item[position];
+        if(data == null) return;
         holder.title.setText(""+data.item_level);
 
         new DonwloadImageTask(holder.icon).execute(String.format(
