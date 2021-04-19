@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="static_regions">
+            <item>us</item>
+            <item>eu</item>
+            <item>tw</item>
+            <item>kr</item>
+            <item>cn</item>
+    </string-array>
+    <string-array name="server_names">
+        <item>Gordunni</item>
+    </string-array>
+</resources>
