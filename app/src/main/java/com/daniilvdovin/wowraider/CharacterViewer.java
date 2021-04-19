@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daniilvdovin.wowraider.model.Character;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CharacterViewer extends AppCompatActivity {
     Character character;
@@ -60,7 +61,9 @@ public class CharacterViewer extends AppCompatActivity {
 
 
         });
-
+        API.setErrorListner((s)->{
+            Snackbar.make(this.getCurrentFocus(),s,Snackbar.LENGTH_SHORT).show();
+        });
         String[] request = getIntent().getStringArrayExtra("request");
         API.getCharacterAsync(request[0],request[1],request[2]);
 
