@@ -70,7 +70,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         holder.title.setText(""+data.item_level);
 
         new DonwloadImageTask(holder.icon).execute(String.format(
-                "https://cdnassets.raider.io/images/wow/icons/large/%s.jpg",data.icon));
+                "https://cdnassets.raider.io/images/wow/icons/small/%s.jpg",data.icon));
 
         holder.icon.setOnClickListener(v ->{
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse( String.format("https://www.wowhead.com/item=%s",data.item_id))));

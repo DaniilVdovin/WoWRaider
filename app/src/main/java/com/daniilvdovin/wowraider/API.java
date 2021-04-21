@@ -14,6 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class API {
 
@@ -62,7 +64,13 @@ public class API {
                 armory.mainhand,
                 armory.offhand
         };
-        return gearItems;
+        List<GearItem> temp = new ArrayList<>();
+        for (GearItem i:
+             gearItems) {
+            if(i!=null)
+                temp.add(i);
+        }
+        return temp.toArray(new GearItem[0]);
     }
     static JSONObject getJsonFromUrl(String cmd) {
         try {
@@ -75,7 +83,11 @@ public class API {
         return null;
     }
     static boolean isError(JSONObject object){
-        if(object.has("statusCode"))
+        if(object==null) {
+                ErrorEvent.Error("Just Null");
+            return true;
+        }
+        else if(object.has("statusCode"))
         {
             try {
                 ErrorEvent.Error(object.getString("message"));
@@ -99,7 +111,11 @@ public class API {
         return obj;
     }
     static void getCharacterAsync(String region, String realm, String name){
-       new getCharacterAsyncRequest().execute(region,realm,name);
+        Log.e("REQUEST", region+realm+name);
+        if(region!=null||realm!=null||name!=null)
+            if(!region.equals("") && !realm.equals("") && !name.equals(""))
+                new getCharacterAsyncRequest().execute(region,realm,name);
+        else ErrorEvent.Error("Arguments null");
     }
 
 
@@ -110,18 +126,27 @@ public class API {
         protected String doInBackground(String... arg) {
             try {
                 character =  getCharacter(arg[0], arg[1],arg[2]);
-                if(character == null)Thread.currentThread().interrupt();
+                if(character == null){
+                    Thread.currentThread().interrupt();
+                    return null;
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return character.name;
+            return "s";
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            API.character = this.character;
-            UpdateListner.UpdateListner();
+            if(character!=null){
+                API.character = this.character;
+                UpdateListner.UpdateListner();
+            }
+            if(s==null){
+                ErrorEvent.Error("Character not found");
+            }
+
         }
     }
 }

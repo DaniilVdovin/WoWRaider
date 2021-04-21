@@ -31,6 +31,7 @@ public class CharacterViewer extends AppCompatActivity {
                 covenant = findViewById(R.id.tv_covenant);
         RecyclerView dnm_gear = findViewById(R.id.dnm_gear);
         RecyclerView.LayoutManager GridLayoutManager = new GridLayoutManager(this,8);
+        GridLayoutManager.setItemPrefetchEnabled(true);
         dnm_gear.setLayoutManager(GridLayoutManager);
 
         ImageView icon = findViewById(R.id.imageView2);
@@ -62,10 +63,15 @@ public class CharacterViewer extends AppCompatActivity {
 
         });
         API.setErrorListner((s)->{
-            Snackbar.make(this.getCurrentFocus(),s,Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(dnm_gear,s,Snackbar.LENGTH_SHORT).show();
+            onBackPressed();
         });
         String[] request = getIntent().getStringArrayExtra("request");
         API.getCharacterAsync(request[0],request[1],request[2]);
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

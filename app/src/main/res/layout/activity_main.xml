@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tabl"
@@ -58,7 +59,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editTextTextRegion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,13 +67,14 @@
                     android:layout_weight="1"
                     android:background="@drawable/border"
                     android:ems="10"
+                    android:hint="Region"
                     android:inputType="textPersonName"
                     android:padding="10dp"
-                    android:text="Region"
                     android:textColor="@color/bar_text_smoke"
+                    android:textColorHint="@color/back"
                     android:textStyle="bold|italic" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editTextTextRealm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,15 +82,16 @@
                     android:layout_weight="1"
                     android:background="@drawable/border"
                     android:ems="10"
+                    android:hint="Realm"
                     android:inputType="textPersonName"
                     android:padding="10dp"
-                    android:text="Realm"
                     android:textColor="@color/bar_text_smoke"
+                    android:textColorHint="@color/back"
                     android:textStyle="bold|italic" />
 
             </LinearLayout>
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/editTextTextCharacterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,27 +99,32 @@
                 android:layout_weight="1"
                 android:background="@drawable/border"
                 android:ems="10"
+                android:hint="Character Name"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:text="Character Name"
                 android:textColor="@color/bar_text_smoke"
+                android:textColorHint="@color/back"
                 android:textStyle="bold|italic" />
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="1dp"
-            android:background="#0000000"
+            android:background="#00FFFFFF"
             android:padding="10dp"
+            android:scaleType="fitEnd"
+            android:src="@android:drawable/ic_menu_search"
             android:tint="@color/bar_text_white"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_info_search"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_search" />
+            tools:src="@android:drawable/ic_menu_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

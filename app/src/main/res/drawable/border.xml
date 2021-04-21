@@ -3,16 +3,19 @@
 
     <item>
        <shape>
+           <corners android:radius="5dp"/>
            <solid android:color="@color/bar_background"/>
        </shape>
    </item>
     <item>
         <shape>
+            <corners android:radius="5dp"/>
             <stroke android:width="3dp" android:color="@color/bar"></stroke>
         </shape>
     </item>
     <item android:height="0.3in">
         <shape>
+            <corners android:radius="5dp"/>
             <solid android:color="@color/bar"></solid>
         </shape>
     </item>
