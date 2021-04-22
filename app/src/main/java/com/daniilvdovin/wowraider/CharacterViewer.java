@@ -31,15 +31,22 @@ public class CharacterViewer extends AppCompatActivity {
                 race = findViewById(R.id.tv_race),
                 class_cpec = findViewById(R.id.tv_class_spec_name),
                 itemlvl = findViewById(R.id.tv_itemlvl),
-                covenant = findViewById(R.id.tv_covenant);
+                covenant = findViewById(R.id.tv_covenant),
+                achievement = findViewById(R.id.tv_achiwment);
         RecyclerView
                 dnm_gear = findViewById(R.id.dnm_gear),
-                dnm_mpluseprogress = findViewById(R.id.dnm_mplusescore);
+                dnm_mpluseprogress = findViewById(R.id.dnm_mplusescore),
+                dnm_ranks = findViewById(R.id.dnm_ranks);
 
         dnm_gear.setLayoutManager(new GridLayoutManager(this,8));
+
         LinearLayoutManager l = new LinearLayoutManager(this);
         l.setOrientation(LinearLayoutManager.HORIZONTAL);
         dnm_mpluseprogress.setLayoutManager(l);
+
+        LinearLayoutManager l1 = new LinearLayoutManager(this);
+        dnm_ranks.setLayoutManager(l1);
+
 
         ImageView icon = findViewById(R.id.imageView2);
         ImageButton shared = findViewById(R.id.imageButton);
@@ -51,6 +58,10 @@ public class CharacterViewer extends AppCompatActivity {
             race.setText(character.race);
             class_cpec.setText(String.format("%s/%s (%s)",character.classc,character.active_spec_name,character.active_spec_role));
 
+            //achievement_points
+            if(character.achievement_points!=null){
+                achievement.setText(""+character.achievement_points);
+            }
             //covenant
             if(character.covenant != null){
                 covenant.setText(String.format("%s Renown %s",character.covenant.name,character.covenant.renown_level));
@@ -61,7 +72,7 @@ public class CharacterViewer extends AppCompatActivity {
             //Gear
             if(character.gear!=null){
                 if(character.gear.item_level_total!=null)
-                    itemlvl.setText(String.format("%s Item Level",character.gear.item_level_equipped));
+                    itemlvl.setText(String.format("%s Item Level",0+character.gear.item_level_equipped));
                 else
                     itemlvl.setVisibility(View.GONE);
 
@@ -75,7 +86,12 @@ public class CharacterViewer extends AppCompatActivity {
                 AdapterMscore ar = new AdapterMscore(this, API.getAllMpluseScore());
                 dnm_mpluseprogress.setAdapter(ar);
             }
-
+            //Ranks
+            if(character.mythic_plus_ranks!=null)
+            {
+                AdapterRanks rankss = new AdapterRanks(this, API.getListRanks());
+                dnm_ranks.setAdapter(rankss);
+            }
             //Open profile
             shared.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(character.profile_url))));
 

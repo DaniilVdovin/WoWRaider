@@ -9,6 +9,7 @@ import com.daniilvdovin.wowraider.model.CharacterArmory;
 import com.daniilvdovin.wowraider.model.DungeonRun;
 import com.daniilvdovin.wowraider.model.GearItem;
 import com.daniilvdovin.wowraider.model.MythicPluseProgressItem;
+import com.daniilvdovin.wowraider.model.Rank;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -39,7 +40,7 @@ public class API {
     static String
             ROOT = "https://raider.io",
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
-            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs";
+            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks";
 
     static Character character;
 
@@ -125,6 +126,48 @@ public class API {
         if(character.mythic_plus_best_runs.length>0)
         return character.mythic_plus_best_runs[0];
         else return null;
+    }
+    static Rank[] getListRanks(){
+
+        if(character.mythic_plus_ranks.overall!=null)
+                character.mythic_plus_ranks.overall.setName("Overall");
+        if(character.mythic_plus_ranks.classc!=null)
+                character.mythic_plus_ranks.classc.setName("Class");
+
+        if(character.mythic_plus_ranks.class_dps!=null)
+                character.mythic_plus_ranks.class_dps.setName("Class DPS");
+        if(character.mythic_plus_ranks.class_healer!=null)
+                character.mythic_plus_ranks.class_healer.setName("Class Healer");
+        if(character.mythic_plus_ranks.class_tank!=null)
+                character.mythic_plus_ranks.class_tank.setName("Class Tank");
+
+        if(character.mythic_plus_ranks.dps!=null)
+                character.mythic_plus_ranks.dps.setName("DPS");
+        if(character.mythic_plus_ranks.healer!=null)
+                character.mythic_plus_ranks.healer.setName("Healer");
+        if(character.mythic_plus_ranks.tank!=null)
+                character.mythic_plus_ranks.tank.setName("Tank");
+
+        Rank[] temp = new Rank[]{
+                character.mythic_plus_ranks.overall,
+                character.mythic_plus_ranks.classc,
+
+                character.mythic_plus_ranks.class_dps,
+                character.mythic_plus_ranks.class_healer,
+                character.mythic_plus_ranks.class_tank,
+
+                character.mythic_plus_ranks.dps,
+                character.mythic_plus_ranks.healer,
+                character.mythic_plus_ranks.tank
+        };
+        List<Rank> templ = new ArrayList<>();
+        for (Rank l :
+             temp) {
+            if(l!=null)
+                if(l.getName()!=null && l.getName()!="")
+                    templ.add(l);
+        }
+         return templ.toArray(new Rank[0]);
     }
     static MythicPluseProgressItem[] getAllMpluseScore()
     {

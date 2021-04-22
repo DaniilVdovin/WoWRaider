@@ -11,6 +11,7 @@
             <gradient
                 android:centerColor="@color/bar"
                 android:endColor="@color/bar_background"
+                android:angle="-90"
                 />
             <corners android:radius="5dp"/>
         </shape>
