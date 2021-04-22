@@ -2,14 +2,17 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
+            <solid android:color="@color/bar"/>
             <corners android:radius="5dp"/>
-            <solid android:color="@color/bar_background"></solid>
         </shape>
     </item>
     <item>
         <shape>
+            <gradient
+                android:centerColor="@color/bar"
+                android:endColor="@color/bar_background"
+                />
             <corners android:radius="5dp"/>
-            <stroke android:color="#858585" android:width="2dp"></stroke>
         </shape>
     </item>
 </layer-list>

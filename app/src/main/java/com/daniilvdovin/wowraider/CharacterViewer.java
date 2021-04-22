@@ -16,6 +16,9 @@ import android.widget.TextView;
 import com.daniilvdovin.wowraider.model.Character;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CharacterViewer extends AppCompatActivity {
     Character character;
     @Override
@@ -29,10 +32,14 @@ public class CharacterViewer extends AppCompatActivity {
                 class_cpec = findViewById(R.id.tv_class_spec_name),
                 itemlvl = findViewById(R.id.tv_itemlvl),
                 covenant = findViewById(R.id.tv_covenant);
-        RecyclerView dnm_gear = findViewById(R.id.dnm_gear);
-        RecyclerView.LayoutManager GridLayoutManager = new GridLayoutManager(this,8);
-        GridLayoutManager.setItemPrefetchEnabled(true);
-        dnm_gear.setLayoutManager(GridLayoutManager);
+        RecyclerView
+                dnm_gear = findViewById(R.id.dnm_gear),
+                dnm_mpluseprogress = findViewById(R.id.dnm_mplusescore);
+
+        dnm_gear.setLayoutManager(new GridLayoutManager(this,8));
+        LinearLayoutManager l = new LinearLayoutManager(this);
+        l.setOrientation(LinearLayoutManager.HORIZONTAL);
+        dnm_mpluseprogress.setLayoutManager(l);
 
         ImageView icon = findViewById(R.id.imageView2);
         ImageButton shared = findViewById(R.id.imageButton);
@@ -43,11 +50,15 @@ public class CharacterViewer extends AppCompatActivity {
             name.setText(character.name);
             race.setText(character.race);
             class_cpec.setText(String.format("%s/%s (%s)",character.classc,character.active_spec_name,character.active_spec_role));
+
+            //covenant
             if(character.covenant != null){
                 covenant.setText(String.format("%s Renown %s",character.covenant.name,character.covenant.renown_level));
             }else {
                 covenant.setVisibility(View.GONE);
             }
+
+            //Gear
             if(character.gear!=null){
                 if(character.gear.item_level_total!=null)
                     itemlvl.setText(String.format("%s Item Level",character.gear.item_level_equipped));
@@ -58,7 +69,16 @@ public class CharacterViewer extends AppCompatActivity {
                 dnm_gear.setAdapter(adapter);
             }
 
+            //Mythic Score
+            if(character.mythic_plus_scores != null)
+            {
+                AdapterMscore ar = new AdapterMscore(this, API.getAllMpluseScore());
+                dnm_mpluseprogress.setAdapter(ar);
+            }
+
+            //Open profile
             shared.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(character.profile_url))));
+
 
 
         });

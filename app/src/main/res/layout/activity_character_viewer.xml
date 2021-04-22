@@ -221,75 +221,96 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/InfoARaid"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/dark_box">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dnm_mplusescore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:fadeScrollbars="true"
+                    android:fitsSystemWindows="true"
+                    android:foregroundGravity="center"
+                    android:textAlignment="center"
+                    app:barrierMargin="5dp"
+                    app:flow_horizontalAlign="center"
+                    app:flow_verticalAlign="center"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:reverseLayout="true"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/mplusescoreitem" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/InfoAArngs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/border">
 
-                <TextView
-                    android:id="@+id/tv_Info3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Progress"
-                    android:textColor="@color/bar_text_white"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic"
-                    android:typeface="sans"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/inf_bd3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_Info3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/tv_Info3"
-                    app:layout_constraintTop_toTopOf="@+id/tv_Info3">
-
-                    <TextView
-                        android:id="@+id/tv_covenantlvl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/inf_box"
-                        android:padding="5dp"
-                        android:text="221 Item Level"
-                        android:textColor="@color/bar_text_white"
-                        android:textSize="14sp"
-                        android:textStyle="bold|italic"
-                        android:typeface="sans"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/dnm_raidprogress"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="52dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="10"
-                    tools:listitem="@layout/gearitem" />
+                    app:tabBackground="@drawable/tabs_box"
+                    app:tabIndicatorColor="@color/bar"
+                    app:tabIndicatorGravity="bottom"
+                    app:tabSelectedTextColor="@color/bar_text_white"
+                    app:tabTextColor="@color/bar_text_smoke">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Class Ranks" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spec Ranks" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Owerall Ranks" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dnm_ranks"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="4dp"
+                    android:fadeScrollbars="true"
+                    android:fitsSystemWindows="true"
+                    android:foregroundGravity="center"
+                    android:textAlignment="center"
+                    app:barrierMargin="5dp"
+                    app:flow_horizontalAlign="center"
+                    app:flow_verticalAlign="center"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+                    app:reverseLayout="true"
+                    tools:itemCount="1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

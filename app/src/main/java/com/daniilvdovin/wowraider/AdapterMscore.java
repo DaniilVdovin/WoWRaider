@@ -23,35 +23,29 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniilvdovin.wowraider.model.GearItem;
+import com.daniilvdovin.wowraider.model.MythicPluseProgressItem;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
-    private GearItem[] Item = new GearItem[]{};
+public class AdapterMscore extends RecyclerView.Adapter<AdapterMscore.ViewHolder>{
+    private MythicPluseProgressItem[] Item = new MythicPluseProgressItem[0];
 
-    public View.OnClickListener OnClickListener;
-    public View.OnLongClickListener OnLongClickListener ;
     public Context context;
     public MainActivity MainActivity;
 
-    public Adapter(Context context,GearItem[] Item)
+    public AdapterMscore(Context context, MythicPluseProgressItem[] Item)
     {
         this.Item = Item;
         this.MainActivity = MainActivity;
         this.context = context;
-
-        this.OnClickListener = OnClickListener;
-        this.OnLongClickListener = OnLongClickListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public boolean phaze;
-        public ImageView icon;
-        public TextView title;
+        public TextView title,score,type;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            icon =  itemView.findViewById(R.id.imageView);
-            title = itemView.findViewById(R.id.textView);
-            phaze = false;
+            title = itemView.findViewById(R.id.tv_title);
+            type = itemView.findViewById(R.id.tv_type);
+            score = itemView.findViewById(R.id.tv_score);
         }
     }
 
@@ -59,22 +53,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.gearitem,
+                .inflate(R.layout.mplusescoreitem,
                         parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        final GearItem data = Item[position];
+        final MythicPluseProgressItem data = Item[position];
         if(data == null) return;
-        holder.title.setText(""+data.item_level);
-
-        new DonwloadImageTask(holder.icon).execute(String.format(
-                "https://cdnassets.raider.io/images/wow/icons/large/%s.jpg",data.icon));
-
-        holder.icon.setOnClickListener(v ->{
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse( String.format("https://www.wowhead.com/item=%s",data.item_id))));
-        });
+        holder.title.setText(""+data.getTite());
+        holder.score.setText(""+data.getScore());
+        holder.type.setText(""+data.getType());
     }
 
     @Override

@@ -6,7 +6,9 @@ import android.util.Log;
 
 import com.daniilvdovin.wowraider.model.Character;
 import com.daniilvdovin.wowraider.model.CharacterArmory;
+import com.daniilvdovin.wowraider.model.DungeonRun;
 import com.daniilvdovin.wowraider.model.GearItem;
+import com.daniilvdovin.wowraider.model.MythicPluseProgressItem;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -16,6 +18,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.DoubleToIntFunction;
 
 public class API {
 
@@ -36,7 +39,7 @@ public class API {
     static String
             ROOT = "https://raider.io",
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
-            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores";
+            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs";
 
     static Character character;
 
@@ -118,6 +121,23 @@ public class API {
         else ErrorEvent.Error("Arguments null");
     }
 
+    static DungeonRun MythicPluseGetBestRun(){
+        if(character.mythic_plus_best_runs.length>0)
+        return character.mythic_plus_best_runs[0];
+        else return null;
+    }
+    static MythicPluseProgressItem[] getAllMpluseScore()
+    {
+        MythicPluseProgressItem[] temp =
+                new MythicPluseProgressItem[]{
+                        new MythicPluseProgressItem("DPS",""+character.mythic_plus_scores.getAll(),"Mythic+ All Score"),
+                        MythicPluseGetBestRun()!=null?
+                                new MythicPluseProgressItem(MythicPluseGetBestRun().short_name,"+"+MythicPluseGetBestRun().mythic_level,"Timed run")
+                                :
+                                null
+                };
+        return temp;
+    }
 
     //Async
     static class getCharacterAsyncRequest extends AsyncTask<String, Integer, String> {
