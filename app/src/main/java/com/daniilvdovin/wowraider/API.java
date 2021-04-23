@@ -10,6 +10,8 @@ import com.daniilvdovin.wowraider.model.DungeonRun;
 import com.daniilvdovin.wowraider.model.GearItem;
 import com.daniilvdovin.wowraider.model.MythicPluseProgressItem;
 import com.daniilvdovin.wowraider.model.Rank;
+import com.daniilvdovin.wowraider.model2.RaidRanking;
+import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -17,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.PushbackInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.DoubleToIntFunction;
@@ -26,23 +29,37 @@ public class API {
     public interface ApiEvent {
         void UpdateListner();
     }
+    public interface ApiRankingEvent{
+        void UpdateRaidRanking();
+    }
     public interface ErrorEvent{
         void Error(String message);
     }
     static ApiEvent UpdateListner;
     static ErrorEvent ErrorEvent;
+    static ApiRankingEvent apiRankingEvent;
     public static void setUpdateListner(ApiEvent apiEvent) {
         UpdateListner = apiEvent;
+    }
+    public static void setUpdateRaidRanking(ApiRankingEvent apiEvent) {
+        apiRankingEvent = apiEvent;
     }
     public static void setErrorListner(ErrorEvent errorListner) {
         ErrorEvent = errorListner;
     }
     static String
             ROOT = "https://raider.io",
+
+            ROOT_TOKEN ="https://wowtokenprices.com",
+            TOKEN_CURRENT_PRICE="/current_prices.json",
+
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
-            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks";
+            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks",
+
+            RAID_WORLD_PROGRESS = "/api/v1/raiding/raid-rankings?raid=%s&difficulty=%s&region=%s";
 
     static Character character;
+    static RaidRanking raidRanking;
 
     API(){
 
@@ -103,6 +120,23 @@ public class API {
         return false;
     }
 
+    //Raid progress Guild
+    static RaidRanking getRaidRanking(String raid ,String difficulty, String region){
+        return new Gson().fromJson(getJsonFromUrl(ROOT+String.format(RAID_WORLD_PROGRESS,raid,difficulty,region)).toString(), RaidRanking.class);
+    }
+    static void getRaidRankingAsynk(String raid ,String difficulty, String region){
+        if(region!=null||difficulty!=null||raid!=null)
+            if(!region.equals("") && !raid.equals("") && !difficulty.equals(""))
+                new getRaidRankingAsyncRequest().execute(raid,difficulty,region);
+            else ErrorEvent.Error("Arguments null");
+    }
+    static RaidRankingGuild[] getArrayOfRaidRankingGuild(){
+        if(raidRanking!=null)
+            return raidRanking.raidRankings;
+        else
+            ErrorEvent.Error("Raid Rankings null");
+        return null;
+    }
     //Character
     static JSONObject getJsonCharacter(String region,String realm,String name){
         return getJsonFromUrl(ROOT+String.format(CHARACTER,region,realm,name)+CHARACTER_FIELDS);
@@ -169,8 +203,7 @@ public class API {
         }
          return templ.toArray(new Rank[0]);
     }
-    static MythicPluseProgressItem[] getAllMpluseScore()
-    {
+    static MythicPluseProgressItem[] getAllMpluseScore() {
         MythicPluseProgressItem[] temp =
                 new MythicPluseProgressItem[]{
                         new MythicPluseProgressItem("DPS",""+character.mythic_plus_scores.getAll(),"Mythic+ All Score"),
@@ -208,6 +241,31 @@ public class API {
             }
             if(s==null){
                 ErrorEvent.Error("Character not found");
+            }
+
+        }
+    }
+    static class getRaidRankingAsyncRequest extends AsyncTask<String, Integer, String> {
+        RaidRanking raidRanking;
+        @Override
+        protected String doInBackground(String... arg) {
+                raidRanking =  getRaidRanking(arg[0], arg[1],arg[2]);
+                if(raidRanking == null){
+                    Thread.currentThread().interrupt();
+                    return null;
+                }
+            return "s";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(raidRanking!=null){
+                API.raidRanking = this.raidRanking;
+                apiRankingEvent.UpdateRaidRanking();
+            }
+            if(s==null){
+                ErrorEvent.Error("Not found");
             }
 
         }

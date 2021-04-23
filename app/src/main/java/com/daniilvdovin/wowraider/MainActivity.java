@@ -1,6 +1,8 @@
 package com.daniilvdovin.wowraider;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.daniilvdovin.wowraider.mainscreen.AdapterRaidRanking;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView realm,region,name;
     ArrayAdapter<String> aregion, arealm,aname;
     String[] brealm,bregion, bname;
+
+    RecyclerView dnm_guildranking;
 
     ImageButton bt_seatch;
 
@@ -69,5 +74,19 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(name,"Please enter all arguments",Snackbar.LENGTH_SHORT).show();
             }
         });
+
+        dnm_guildranking = findViewById(R.id.dnm_raidrankguild);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        dnm_guildranking.setLayoutManager(linearLayoutManager);
+
+
+        API.setUpdateRaidRanking(()->{
+            AdapterRaidRanking adapterRaidRanking = new AdapterRaidRanking(this,API.getArrayOfRaidRankingGuild(),5);
+            dnm_guildranking.setAdapter(adapterRaidRanking);
+        });
+
+
+        API.getRaidRankingAsynk("castle-nathria","mythic","world");
+
     }
 }

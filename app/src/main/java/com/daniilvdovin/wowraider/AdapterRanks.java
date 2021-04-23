@@ -2,18 +2,14 @@ package com.daniilvdovin.wowraider;
 
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.daniilvdovin.wowraider.model.GearItem;
 import com.daniilvdovin.wowraider.model.Rank;
 
 public class AdapterRanks extends RecyclerView.Adapter<AdapterRanks.ViewHolder>{
@@ -37,7 +33,7 @@ public class AdapterRanks extends RecyclerView.Adapter<AdapterRanks.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.t_name);
+            title = itemView.findViewById(R.id.t_nameguild);
             word = itemView.findViewById(R.id.t_name2);
             realm = itemView.findViewById(R.id.t_name3);
             region = itemView.findViewById(R.id.t_name4);
