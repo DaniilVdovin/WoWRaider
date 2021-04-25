@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.daniilvdovin.wowraider.R;
-import com.daniilvdovin.wowraider.model.Rank;
-import com.daniilvdovin.wowraider.model2.RaidRanking;
 import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
 
 public class AdapterRaidRanking extends RecyclerView.Adapter<AdapterRaidRanking.ViewHolder>{
@@ -35,9 +33,9 @@ public class AdapterRaidRanking extends RecyclerView.Adapter<AdapterRaidRanking.
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.t_nameguild);
-            rank = itemView.findViewById(R.id.t_rank);
-            realm = itemView.findViewById(R.id.t_nameserver);
+            name = itemView.findViewById(R.id.t_price);
+            rank = itemView.findViewById(R.id.t_region);
+            realm = itemView.findViewById(R.id.t_last_change);
             progress = itemView.findViewById(R.id.t_progres);
         }
     }

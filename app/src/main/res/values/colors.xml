@@ -21,4 +21,13 @@
     <color name="bar_border_smoke">#b8b8b8</color>
     <color name="gear_item_epic">#a335ee</color>
     <color name="achivment">#FFAB00</color>
+
+    <color name="gear_legendary">#ff8000</color>
+    <color name="gear_epic">#a335ee</color>
+    <color name="gear_rare">#0070dd</color>
+    <color name="gear_default">#191716</color>
+    <color name="gear_trash">#b8b8b8</color>
+
+
+
 </resources>

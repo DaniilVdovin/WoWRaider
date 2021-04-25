@@ -1,6 +1,7 @@
 package com.daniilvdovin.wowraider;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 
+import com.daniilvdovin.wowraider.Token.AdapterToken;
 import com.daniilvdovin.wowraider.mainscreen.AdapterRaidRanking;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> aregion, arealm,aname;
     String[] brealm,bregion, bname;
 
-    RecyclerView dnm_guildranking;
+    RecyclerView dnm_guildranking,dnm_token_price;
 
     ImageButton bt_seatch;
 
@@ -88,5 +90,16 @@ public class MainActivity extends AppCompatActivity {
 
         API.getRaidRankingAsynk("castle-nathria","mythic","world");
 
+
+        dnm_token_price = findViewById(R.id.dnm_mplusescore);
+        dnm_token_price.setLayoutManager(new GridLayoutManager(this,5));
+
+        API.setUpdateToken(()->{
+            Log.e("TAG",API.token.eu.current_price + " : : "+ API.token.eu.last_change);
+            AdapterToken adapterToken = new AdapterToken(this,API.getArrayTokens());
+            dnm_token_price.setAdapter(adapterToken);
+        });
+
+        API.getTokenAsynk();
     }
 }

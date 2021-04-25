@@ -8,6 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -16,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,11 +50,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         public boolean phaze;
         public ImageView icon;
         public TextView title;
-
+        public LinearLayout root;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             icon =  itemView.findViewById(R.id.imageView);
             title = itemView.findViewById(R.id.textView);
+            root = itemView.findViewById(R.id.root);
             phaze = false;
         }
     }
@@ -68,6 +73,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         final GearItem data = Item[position];
         if(data == null) return;
         holder.title.setText(""+data.item_level);
+
+        switch (data.item_quality){
+            case 5:holder.title.setBackgroundColor(context.getResources().getColor(R.color.gear_legendary));
+                break;
+            case 4:holder.title.setBackgroundColor(context.getResources().getColor(R.color.gear_epic));
+                break;
+            case 3:holder.title.setBackgroundColor(context.getResources().getColor(R.color.gear_rare));
+                break;
+            case 2:holder.title.setBackgroundColor(context.getResources().getColor(R.color.gear_default));
+                break;
+            case 1:holder.title.setBackgroundColor(context.getResources().getColor(R.color.gear_trash));
+                break;
+        }
 
         new DonwloadImageTask(holder.icon).execute(String.format(
                 "https://cdnassets.raider.io/images/wow/icons/large/%s.jpg",data.icon));

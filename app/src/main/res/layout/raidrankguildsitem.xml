@@ -7,7 +7,7 @@
     android:background="@color/bar_background">
 
     <TextView
-        android:id="@+id/t_nameguild"
+        android:id="@+id/t_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.18" />
 
     <TextView
-        android:id="@+id/t_nameserver"
+        android:id="@+id/t_last_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -29,7 +29,7 @@
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t_nameguild" />
+        app:layout_constraintTop_toBottomOf="@+id/t_price" />
 
     <TextView
         android:id="@+id/t_progres"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.483" />
 
     <TextView
-        android:id="@+id/t_rank"
+        android:id="@+id/t_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

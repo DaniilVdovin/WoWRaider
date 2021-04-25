@@ -9,5 +9,98 @@
     </string-array>
     <string-array name="server_names">
         <item>Gordunni</item>
+        <item>Aegwynn</item>
+        <item>Aerie Peak</item>
+        <item>Agamaggan</item>
+        <item>Aggramar</item>
+        <item>Akama</item>
+        <item>Alexstrasza</item>
+        <item>Alleria</item>
+        <item>Altar of Storms</item>
+        <item>Alterac Mountains</item>
+        <item>Aman'Thul</item>
+        <item>Andorhal</item>
+        <item>Anetheron</item>
+        <item>Antonidas</item>
+        <item>Anub'arak</item>
+        <item>Anvilmar</item>
+        <item>Arathor</item>
+        <item>Archimonde</item>
+        <item>Area 52</item>
+        <item>Argent Dawn</item>
+        <item>Arthas</item>
+        <item>Arygos</item>
+        <item>Auchindoun</item>
+        <item>Azgalor</item>
+        <item>Azjol-Nerub</item>
+        <item>Azralon</item>
+        <item>Azshara</item>
+        <item>Azuremyst</item>
+        <item>Baelgun</item>
+        <item>Balnazzar</item>
+        <item>Barthilas</item>
+        <item>Black Dragonflight</item>
+        <item>Blackhand</item>
+        <item>Blackrock</item>
+        <item>Blackwater Raiders</item>
+        <item>Blackwing Lair</item>
+        <item>Blade's Edge</item>
+        <item>Bladefist</item>
+        <item>Bleeding Hollow</item>
+        <item>Blood Furnace</item>
+        <item>Bloodhoof</item>
+        <item>Bloodscalp</item>
+        <item>Bonechewer</item>
+        <item>Borean Tundra</item>
+        <item>Boulderfist</item>
+        <item>Bronzebeard</item>
+        <item>Burning Blade</item>
+        <item>Burning Legion</item>
+        <item>Caelestrasz</item>
+        <item>Cairne</item>
+        <item>Cenarion Circle</item>
+        <item>Cenarius</item>
+        <item>Cho'gall</item>
+        <item>Chromaggus</item>
+        <item>Coilfang</item>
+        <item>Crushridge</item>
+        <item>Daggerspine</item>
+        <item>Dalaran</item>
+        <item>Dalvengyr</item>
+        <item>Dark Iron</item>
+        <item>Darkspear</item>
+        <item>Darrowmere</item>
+        <item>Dath'Remar</item>
+        <item>Dawnbringer</item>
+        <item>Deathwing</item>
+        <item>Demon Soul</item>
+        <item>Dentarg</item>
+        <item>Destromath</item>
+        <item>Dethecus</item>
+        <item>Detheroc</item>
+        <item>Doomhammer</item>
+        <item>Draenor</item>
+        <item>Dragonblight</item>
+        <item>Dragonmaw</item>
+        <item>Drak'Tharon</item>
+        <item>Drak'thul</item>
+        <item>Draka</item>
+        <item>Drakkari</item>
+        <item>Dreadmaul</item>
+        <item>Drenden</item>
+        <item>Dunemaul</item>
+        <item>Durotan</item>
+        <item>Duskwood</item>
+        <item>Earthen Ring</item>
+        <item>Echo Isles</item>
+        <item>Eitrigg</item>
+        <item>Eldre'Thalas</item>
+        <item>Elune</item>
+        <item>Emerald Dream</item>
+        <item>Eonar</item>
+        <item>Eredar</item>
+        <item>Executus</item>
+        <item>Exodar</item>
+
     </string-array>
 </resources>

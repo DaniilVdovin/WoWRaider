@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
 
+import com.daniilvdovin.wowraider.Token.Token;
+import com.daniilvdovin.wowraider.Token.TokenByRegion;
 import com.daniilvdovin.wowraider.model.Character;
 import com.daniilvdovin.wowraider.model.CharacterArmory;
 import com.daniilvdovin.wowraider.model.DungeonRun;
@@ -32,14 +34,21 @@ public class API {
     public interface ApiRankingEvent{
         void UpdateRaidRanking();
     }
+    public interface ApiTokenEvent{
+        void Update();
+    }
     public interface ErrorEvent{
         void Error(String message);
     }
     static ApiEvent UpdateListner;
     static ErrorEvent ErrorEvent;
     static ApiRankingEvent apiRankingEvent;
+    static ApiTokenEvent apiTokenEvent;
     public static void setUpdateListner(ApiEvent apiEvent) {
         UpdateListner = apiEvent;
+    }
+    public static void setUpdateToken(ApiTokenEvent apiEvent) {
+        apiTokenEvent = apiEvent;
     }
     public static void setUpdateRaidRanking(ApiRankingEvent apiEvent) {
         apiRankingEvent = apiEvent;
@@ -47,6 +56,7 @@ public class API {
     public static void setErrorListner(ErrorEvent errorListner) {
         ErrorEvent = errorListner;
     }
+
     static String
             ROOT = "https://raider.io",
 
@@ -60,10 +70,12 @@ public class API {
 
     static Character character;
     static RaidRanking raidRanking;
+    static Token token;
 
     API(){
 
     }
+
 
     //Tool
     static GearItem[] ArmoryTyArray(CharacterArmory armory){
@@ -120,6 +132,22 @@ public class API {
         return false;
     }
 
+    //Token
+    static Token getToken(){
+        return new Gson().fromJson(getJsonFromUrl(ROOT_TOKEN+TOKEN_CURRENT_PRICE).toString(), Token.class);
+    }
+    static void getTokenAsynk(){
+        new getTokenAsyncRequest().execute();
+    }
+    static TokenByRegion[] getArrayTokens(){
+        return new TokenByRegion[]{
+                token.us,
+                token.eu,
+                token.china,
+                token.korea,
+                token.taiwan
+        };
+    }
     //Raid progress Guild
     static RaidRanking getRaidRanking(String raid ,String difficulty, String region){
         return new Gson().fromJson(getJsonFromUrl(ROOT+String.format(RAID_WORLD_PROGRESS,raid,difficulty,region)).toString(), RaidRanking.class);
@@ -270,4 +298,30 @@ public class API {
 
         }
     }
+    static class getTokenAsyncRequest extends AsyncTask<String, Integer, String> {
+        Token token;
+        @Override
+        protected String doInBackground(String... arg) {
+                token =  getToken();
+                if(token == null){
+                    Thread.currentThread().interrupt();
+                    return null;
+                }
+            return "s";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(token!=null){
+                API.token = this.token;
+                apiTokenEvent.Update();
+            }
+            if(s==null){
+                ErrorEvent.Error("Not found");
+            }
+
+        }
+    }
+
 }

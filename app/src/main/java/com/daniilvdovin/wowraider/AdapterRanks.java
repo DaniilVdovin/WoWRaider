@@ -33,7 +33,7 @@ public class AdapterRanks extends RecyclerView.Adapter<AdapterRanks.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.t_nameguild);
+            title = itemView.findViewById(R.id.t_price);
             word = itemView.findViewById(R.id.t_name2);
             realm = itemView.findViewById(R.id.t_name3);
             region = itemView.findViewById(R.id.t_name4);
