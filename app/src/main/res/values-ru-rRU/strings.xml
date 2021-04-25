@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WoW Рейдер</string>
+    <string name="search">Расширенный поиск</string>
+    <string name="region">Регион</string>
+    <string name="realm">Мир</string>
+    <string name="character_name">Имя персонажа</string>
+    <string name="raid_progress">Рейдовый прогресс</string>
+    <string name="token_price">Цена жетона</string>
+    <string name="WIP">Ведется работа над другими моделями</string>
+    <string name="info">Информация</string>
+    <string name="achievment_point">Очки достижений</string>
+    <string name="gear">Экипировка</string>
+    <string name="leaderbord">Таблица лидеров</string>
+    <string name="world">Мир</string>
+    <string name="overall">Общий</string>
+    <string name="class_">Класс</string>
+    <string name="class_dps">"Классовый DPS "</string>
+    <string name="class_hps">Клссовый HPS</string>
+    <string name="class_tank">Классовое Танкование</string>
+    <string name="hps">Лекарь</string>
+    <string name="tank">Танк</string>
+    <string name="mpallscore">Мифик+ Полные очки</string>
+    <string name="timed_run">Забег вовремя</string>
+    <string name="dps">Убийца</string>
+</resources>

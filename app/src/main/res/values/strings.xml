@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name">WoW Raider</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Advanced Search</string>
+    <string name="region">Region</string>
+    <string name="realm">Realm</string>
+    <string name="character_name">Character name</string>
+    <string name="raid_progress">Raid progress</string>
+    <string name="token_price">Token price</string>
+    <string name="WIP">Working on other modules in progress</string>
+    <string name="info">Info</string>
+    <string name="achievment_point">Achievement Points</string>
+    <string name="gear">Gear</string>
+    <string name="leaderbord">Leaderbord</string>
+    <string name="world">World</string>
+    <string name="overall">Overall</string>
+    <string name="class_">Class</string>
+    <string name="class_dps">Class DPS</string>
+    <string name="class_hps">Class Healer</string>
+    <string name="class_tank">Class Tank</string>
+    <string name="dps">DPS</string>
+    <string name="hps">Healer</string>
+    <string name="tank">Tank</string>
+    <string name="mpallscore">Mythic+ All Score</string>
+    <string name="timed_run">Timed run</string>
 </resources>

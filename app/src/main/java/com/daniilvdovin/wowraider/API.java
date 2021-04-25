@@ -1,5 +1,6 @@
 package com.daniilvdovin.wowraider;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
@@ -71,12 +72,14 @@ public class API {
     static Character character;
     static RaidRanking raidRanking;
     static Token token;
-
+    static Context context;
     API(){
 
     }
 
-
+    static void setDefoultContext(Context c){
+        context = c;
+    }
     //Tool
     static GearItem[] ArmoryTyArray(CharacterArmory armory){
         GearItem[] gearItems = new GearItem[]{
@@ -192,23 +195,23 @@ public class API {
     static Rank[] getListRanks(){
 
         if(character.mythic_plus_ranks.overall!=null)
-                character.mythic_plus_ranks.overall.setName("Overall");
+                character.mythic_plus_ranks.overall.setName(context.getResources().getString(R.string.overall));
         if(character.mythic_plus_ranks.classc!=null)
-                character.mythic_plus_ranks.classc.setName("Class");
+                character.mythic_plus_ranks.classc.setName(context.getResources().getString(R.string.class_));
 
         if(character.mythic_plus_ranks.class_dps!=null)
-                character.mythic_plus_ranks.class_dps.setName("Class DPS");
+                character.mythic_plus_ranks.class_dps.setName(context.getResources().getString(R.string.class_dps));
         if(character.mythic_plus_ranks.class_healer!=null)
-                character.mythic_plus_ranks.class_healer.setName("Class Healer");
+                character.mythic_plus_ranks.class_healer.setName(context.getResources().getString(R.string.class_hps));
         if(character.mythic_plus_ranks.class_tank!=null)
-                character.mythic_plus_ranks.class_tank.setName("Class Tank");
+                character.mythic_plus_ranks.class_tank.setName(context.getResources().getString(R.string.class_tank));
 
         if(character.mythic_plus_ranks.dps!=null)
-                character.mythic_plus_ranks.dps.setName("DPS");
+                character.mythic_plus_ranks.dps.setName(context.getResources().getString(R.string.dps));
         if(character.mythic_plus_ranks.healer!=null)
-                character.mythic_plus_ranks.healer.setName("Healer");
+                character.mythic_plus_ranks.healer.setName(context.getResources().getString(R.string.hps));
         if(character.mythic_plus_ranks.tank!=null)
-                character.mythic_plus_ranks.tank.setName("Tank");
+                character.mythic_plus_ranks.tank.setName(context.getResources().getString(R.string.tank));
 
         Rank[] temp = new Rank[]{
                 character.mythic_plus_ranks.overall,
@@ -234,9 +237,9 @@ public class API {
     static MythicPluseProgressItem[] getAllMpluseScore() {
         MythicPluseProgressItem[] temp =
                 new MythicPluseProgressItem[]{
-                        new MythicPluseProgressItem("DPS",""+character.mythic_plus_scores.getAll(),"Mythic+ All Score"),
+                        new MythicPluseProgressItem("DPS",""+character.mythic_plus_scores.getAll(),context.getResources().getString(R.string.mpallscore)),
                         MythicPluseGetBestRun()!=null?
-                                new MythicPluseProgressItem(MythicPluseGetBestRun().short_name,"+"+MythicPluseGetBestRun().mythic_level,"Timed run")
+                                new MythicPluseProgressItem(MythicPluseGetBestRun().short_name,"+"+MythicPluseGetBestRun().mythic_level,context.getResources().getString(R.string.timed_run))
                                 :
                                 null
                 };

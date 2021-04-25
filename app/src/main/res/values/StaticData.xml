@@ -18,11 +18,11 @@
         <item>Alleria</item>
         <item>Altar of Storms</item>
         <item>Alterac Mountains</item>
-        <item>Aman'Thul</item>
+        <item>Aman\'Thul</item>
         <item>Andorhal</item>
         <item>Anetheron</item>
         <item>Antonidas</item>
-        <item>Anub'arak</item>
+        <item>Anub\'arak</item>
         <item>Anvilmar</item>
         <item>Arathor</item>
         <item>Archimonde</item>
@@ -44,7 +44,7 @@
         <item>Blackrock</item>
         <item>Blackwater Raiders</item>
         <item>Blackwing Lair</item>
-        <item>Blade's Edge</item>
+        <item>Blade\'s Edge</item>
         <item>Bladefist</item>
         <item>Bleeding Hollow</item>
         <item>Blood Furnace</item>
@@ -60,7 +60,7 @@
         <item>Cairne</item>
         <item>Cenarion Circle</item>
         <item>Cenarius</item>
-        <item>Cho'gall</item>
+        <item>Cho\'gall</item>
         <item>Chromaggus</item>
         <item>Coilfang</item>
         <item>Crushridge</item>
@@ -70,7 +70,7 @@
         <item>Dark Iron</item>
         <item>Darkspear</item>
         <item>Darrowmere</item>
-        <item>Dath'Remar</item>
+        <item>Dath\'Remar</item>
         <item>Dawnbringer</item>
         <item>Deathwing</item>
         <item>Demon Soul</item>
@@ -82,8 +82,8 @@
         <item>Draenor</item>
         <item>Dragonblight</item>
         <item>Dragonmaw</item>
-        <item>Drak'Tharon</item>
-        <item>Drak'thul</item>
+        <item>Drak\'Tharon</item>
+        <item>Drak\'thul</item>
         <item>Draka</item>
         <item>Drakkari</item>
         <item>Dreadmaul</item>
@@ -94,13 +94,12 @@
         <item>Earthen Ring</item>
         <item>Echo Isles</item>
         <item>Eitrigg</item>
-        <item>Eldre'Thalas</item>
+        <item>Eldre\'Thalas</item>
         <item>Elune</item>
         <item>Emerald Dream</item>
         <item>Eonar</item>
         <item>Eredar</item>
         <item>Executus</item>
         <item>Exodar</item>
-
     </string-array>
 </resources>

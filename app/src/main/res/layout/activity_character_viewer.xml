@@ -42,7 +42,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tv_Info"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_Info"
-                    app:srcCompat="?attr/actionModeShareDrawable" />
+                    app:srcCompat="?attr/actionModeShareDrawable"
+                    android:contentDescription="TODO" />
 
                 <TextView
                     android:id="@+id/tv_Info"
@@ -50,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="Info"
+                    android:text="@string/info"
                     android:textColor="@color/bar_text_white"
                     android:textSize="24sp"
                     android:textStyle="bold|italic"
@@ -71,7 +72,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.152"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:contentDescription="TODO" />
 
                 <LinearLayout
                     android:id="@+id/inf_bd"
@@ -171,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        android:text="Achievement Points"
+                        android:text="@string/achievment_point"
                         android:textAlignment="center"
                         android:textColor="@color/bar_text_white"
                         android:textSize="14sp"
@@ -210,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="Gear"
+                    android:text="@string/gear"
                     android:textColor="@color/bar_text_white"
                     android:textSize="24sp"
                     android:textStyle="bold|italic"
@@ -320,7 +322,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:text="Leaderbord"
+                    android:text="@string/leaderbord"
                     android:textColor="@color/bar_text_white"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -332,7 +334,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="68dp"
                     android:layout_marginTop="16dp"
-                    android:text="World"
+                    android:text="@string/world"
                     android:textColor="@color/bar_text_white"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -343,7 +345,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Region"
+                    android:text="@string/region"
                     android:textColor="@color/bar_text_white"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/textView5"
@@ -357,7 +359,7 @@
                     android:layout_marginStart="224dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="48dp"
-                    android:text="Realm"
+                    android:text="@string/realm"
                     android:textColor="@color/bar_text_white"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"

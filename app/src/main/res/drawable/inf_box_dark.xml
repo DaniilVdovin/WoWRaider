@@ -3,13 +3,15 @@
     <item>
         <shape>
             <corners android:radius="5dp"/>
-            <solid android:color="@color/bar"></solid>
+            <solid android:color="@color/bar" />
         </shape>
     </item>
     <item>
         <shape>
             <corners android:radius="5dp"/>
-            <stroke android:color="#858585" android:width="2dp"></stroke>
+            <stroke
+                android:color="#858585"
+                android:width="2dp" />
         </shape>
     </item>
 </layer-list>
