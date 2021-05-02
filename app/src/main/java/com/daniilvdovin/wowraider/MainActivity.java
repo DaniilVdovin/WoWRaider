@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        API.setDefaultContext(this);
+
         Intent characterViewer = new Intent(this,CharacterViewer.class);
 
         bt_seatch = findViewById(R.id.imageButton2);

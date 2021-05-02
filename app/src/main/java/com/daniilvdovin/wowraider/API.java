@@ -77,7 +77,7 @@ public class API {
 
     }
 
-    static void setDefoultContext(Context c){
+    static void setDefaultContext(Context c){
         context = c;
     }
     //Tool
@@ -239,7 +239,7 @@ public class API {
                 new MythicPluseProgressItem[]{
                         new MythicPluseProgressItem("DPS",""+character.mythic_plus_scores.getAll(),context.getResources().getString(R.string.mpallscore)),
                         MythicPluseGetBestRun()!=null?
-                                new MythicPluseProgressItem(MythicPluseGetBestRun().short_name,"+"+MythicPluseGetBestRun().mythic_level,context.getResources().getString(R.string.timed_run))
+                                new MythicPluseProgressItem(MythicPluseGetBestRun().short_name,"+"+MythicPluseGetBestRun().mythic_level,""+context.getResources().getString(R.string.timed_run))
                                 :
                                 null
                 };
