@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -99,8 +100,8 @@ public class CharacterViewer extends AppCompatActivity {
 
         });
         API.setErrorListner((s)->{
-            Snackbar.make(dnm_gear,s,Snackbar.LENGTH_SHORT).show();
-            onBackPressed();
+            //Snackbar.make(dnm_gear,s,Snackbar.LENGTH_SHORT).show();
+            runOnUiThread(this::onBackPressed);
         });
         String[] request = getIntent().getStringArrayExtra("request");
         API.getCharacterAsync(request[0],request[1],request[2]);

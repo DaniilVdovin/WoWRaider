@@ -16,6 +16,7 @@ import com.daniilvdovin.wowraider.model.Rank;
 import com.daniilvdovin.wowraider.model2.RaidRanking;
 import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
@@ -112,8 +113,22 @@ public class API {
         try {
             return jsonReader.readJsonFromUrl(cmd);
         } catch (IOException e) {
+            JSONObject error = new JSONObject();
+            try {
+                error.put("error", e.getMessage().toString());
+            } catch (JSONException jsonException) {
+                jsonException.printStackTrace();
+            }
+            isError(error);
             e.printStackTrace();
         } catch (JSONException e) {
+            JSONObject error = new JSONObject();
+            try {
+                error.put("error", e.getMessage().toString());
+            } catch (JSONException jsonException) {
+                jsonException.printStackTrace();
+            }
+            isError(error);
             e.printStackTrace();
         }
         return null;
@@ -131,13 +146,22 @@ public class API {
                 e.printStackTrace();
             }
             return true;
+        }else  if(object.has("error")){
+            ErrorEvent.Error("API Error");
+            return true;
         }
         return false;
     }
 
     //Token
     static Token getToken(){
-        return new Gson().fromJson(getJsonFromUrl(ROOT_TOKEN+TOKEN_CURRENT_PRICE).toString(), Token.class);
+        try {
+            Token token = new Gson().fromJson(getJsonFromUrl(ROOT_TOKEN+TOKEN_CURRENT_PRICE).toString(), Token.class);
+            return token;
+        }catch (Exception e){
+            isError(null);
+        }
+        return null;
     }
     static void getTokenAsynk(){
         new getTokenAsyncRequest().execute();
@@ -153,7 +177,13 @@ public class API {
     }
     //Raid progress Guild
     static RaidRanking getRaidRanking(String raid ,String difficulty, String region){
-        return new Gson().fromJson(getJsonFromUrl(ROOT+String.format(RAID_WORLD_PROGRESS,raid,difficulty,region)).toString(), RaidRanking.class);
+        try {
+            RaidRanking raidRanking = new Gson().fromJson(getJsonFromUrl(ROOT+String.format(RAID_WORLD_PROGRESS,raid,difficulty,region)).toString(), RaidRanking.class);
+            return raidRanking;
+        }catch (Exception e){
+            isError(null);
+        }
+        return null;
     }
     static void getRaidRankingAsynk(String raid ,String difficulty, String region){
         if(region!=null||difficulty!=null||raid!=null)

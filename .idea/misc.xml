@@ -5,7 +5,24 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_character_viewer.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3490740740740741" />
+        <entry key="app/src/main/res/layout/gearitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/mplusescoreitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/raidrankguildsitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/ranksrowitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/tokenregionitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24166666666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

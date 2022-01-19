@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         API.setDefaultContext(this);
-
+        API.setErrorListner((s)->{
+            Snackbar.make(dnm_guildranking,s,Snackbar.LENGTH_SHORT).show();
+        });
         Intent characterViewer = new Intent(this,CharacterViewer.class);
 
         bt_seatch = findViewById(R.id.imageButton2);
@@ -72,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                                 (String) region.getText().toString(),
                                 (String) realm.getText().toString(),
                                 (String) name.getText().toString()});
-
                 startActivity(characterViewer);
             }
             else {
