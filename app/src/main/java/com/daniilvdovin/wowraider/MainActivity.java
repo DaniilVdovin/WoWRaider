@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.daniilvdovin.wowraider.Token.AdapterToken;
 import com.daniilvdovin.wowraider.mainscreen.AdapterRaidRanking;
@@ -92,7 +94,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        API.getRaidRankingAsynk("castle-nathria","mythic","world");
+        findViewById(R.id.wowmap).setOnClickListener((v -> {
+            String packageName = "com.daniilvdovin.wowmap";
+            Intent intent = getPackageManager().getLaunchIntentForPackage(packageName);
+            if(intent == null) {
+                Toast.makeText(this,"App Not Installed",Toast.LENGTH_LONG).show();
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+packageName));
+            }
+            startActivity(intent);
+        }));
+
+        API.getRaidRankingAsynk("sanctum-of-domination","mythic","world");
 
 
         dnm_token_price = findViewById(R.id.dnm_mplusescore);

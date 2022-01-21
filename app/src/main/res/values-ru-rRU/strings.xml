@@ -23,4 +23,6 @@
     <string name="mpallscore">Мифик+ Полные очки</string>
     <string name="timed_run">Забег вовремя</string>
     <string name="dps">Убийца</string>
+    <string name="sale_lable">Наши приложения</string>
+    <string name="app_wow_map">Карта WoW: Все миры.</string>
 </resources>
