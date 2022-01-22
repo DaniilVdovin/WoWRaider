@@ -82,7 +82,8 @@
                             android:padding="10dp"
                             android:textColor="@color/bar_text_smoke"
                             android:textColorHint="@color/back"
-                            android:textStyle="bold|italic" />
+                            android:textStyle="bold|italic"
+                            tools:text="eu" />
 
                         <AutoCompleteTextView
                             android:id="@+id/editTextTextRealm"
@@ -95,6 +96,7 @@
                             android:hint="@string/realm"
                             android:inputType="textPersonName"
                             android:padding="10dp"
+                            android:text="Gordunni"
                             android:textColor="@color/bar_text_smoke"
                             android:textColorHint="@color/back"
                             android:textStyle="bold|italic" />
@@ -112,6 +114,7 @@
                         android:hint="@string/character_name"
                         android:inputType="textPersonName"
                         android:padding="10dp"
+                        android:text="Бранзубрут"
                         android:textColor="@color/bar_text_smoke"
                         android:textColorHint="@color/back"
                         android:textStyle="bold|italic" />

@@ -30,6 +30,8 @@ import java.util.function.DoubleToIntFunction;
 
 public class API {
 
+
+
     public interface ApiEvent {
         void UpdateListner();
     }
@@ -66,7 +68,7 @@ public class API {
             TOKEN_CURRENT_PRICE="/current_prices.json",
 
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
-            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks",
+            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks,mythic_plus_recent_runs",
 
             RAID_WORLD_PROGRESS = "/api/v1/raiding/raid-rankings?raid=%s&difficulty=%s&region=%s";
 
@@ -152,7 +154,6 @@ public class API {
         }
         return false;
     }
-
     //Token
     static Token getToken(){
         try {
@@ -222,6 +223,7 @@ public class API {
         return character.mythic_plus_best_runs[0];
         else return null;
     }
+
     static Rank[] getListRanks(){
 
         if(character.mythic_plus_ranks.overall!=null)

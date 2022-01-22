@@ -84,8 +84,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dnm_guildranking = findViewById(R.id.dnm_raidrankguild);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         dnm_guildranking.setLayoutManager(linearLayoutManager);
+
 
 
         API.setUpdateRaidRanking(()->{

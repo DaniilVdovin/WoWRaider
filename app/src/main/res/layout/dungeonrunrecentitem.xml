@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bar_background">
+
+    <TextView
+        android:id="@+id/tv_dungeon_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/inf_box"
+        android:padding="10dp"
+        android:text="125.4"
+        android:textColor="@color/bar_text_white"
+        android:textSize="10sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dungen_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_dungen_lvl"
+        app:layout_constraintTop_toTopOf="@+id/tv_dungen_name"
+        app:layout_constraintVertical_bias="0.466" />
+
+    <TextView
+        android:id="@+id/tv_dungeon_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/inf_box"
+        android:padding="10dp"
+        android:text="00:30:04"
+        android:textColor="@color/bar_text_white"
+        android:textSize="10sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dungen_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_dungeon_score"
+        app:layout_constraintTop_toTopOf="@+id/tv_dungen_name" />
+
+    <ImageView
+        android:id="@+id/tv_dungen_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_dungen_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="De Other Side"
+        android:textColor="@color/bar_text_white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dungen_icon"
+        app:layout_constraintStart_toEndOf="@+id/tv_dungen_icon"
+        app:layout_constraintTop_toTopOf="@+id/tv_dungen_icon" />
+
+    <TextView
+        android:id="@+id/tv_dungen_lvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="15+"
+        android:textColor="@color/bar_text_white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dungen_icon"
+        app:layout_constraintStart_toEndOf="@+id/tv_dungen_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_dungen_icon" />
+
+    <WebView
+        android:id="@+id/web"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dungen_icon"
+        tools:ignore="WebViewLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

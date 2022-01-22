@@ -10,12 +10,14 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.24166666666666667" />
-        <entry key="app/src/main/res/layout/activity_character_viewer.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/activity_character_viewer.xml" value="0.31257167866864305" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3490740740740741" />
+        <entry key="app/src/main/res/layout/affixitem.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/dungeonrunrecentitem.xml" value="0.3808525621700698" />
         <entry key="app/src/main/res/layout/gearitem.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/mplusescoreitem.xml" value="0.2015625" />
-        <entry key="app/src/main/res/layout/raidrankguildsitem.xml" value="0.2015625" />
-        <entry key="app/src/main/res/layout/ranksrowitem.xml" value="0.2015625" />
+        <entry key="app/src/main/res/layout/raidrankguildsitem.xml" value="0.47691258407906095" />
+        <entry key="app/src/main/res/layout/ranksrowitem.xml" value="0.6281961002826435" />
         <entry key="app/src/main/res/layout/tokenregionitem.xml" value="0.2015625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24166666666666667" />

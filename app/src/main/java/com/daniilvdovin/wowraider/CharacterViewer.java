@@ -1,6 +1,7 @@
 package com.daniilvdovin.wowraider;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,7 +38,8 @@ public class CharacterViewer extends AppCompatActivity {
         RecyclerView
                 dnm_gear = findViewById(R.id.dnm_gear),
                 dnm_mpluseprogress = findViewById(R.id.dnm_mplusescore),
-                dnm_ranks = findViewById(R.id.dnm_ranks);
+                dnm_ranks = findViewById(R.id.dnm_ranks),
+                dnm_dangers = findViewById(R.id.dnm_dangers);
 
         dnm_gear.setLayoutManager(new GridLayoutManager(this,8));
 
@@ -47,6 +49,10 @@ public class CharacterViewer extends AppCompatActivity {
 
         LinearLayoutManager l1 = new LinearLayoutManager(this);
         dnm_ranks.setLayoutManager(l1);
+
+        LinearLayoutManager l2 = new LinearLayoutManager(this);
+        dnm_dangers.setLayoutManager(l2);
+        dnm_dangers.addItemDecoration(new DividerItemDecoration(dnm_dangers.getContext(), DividerItemDecoration.HORIZONTAL));
 
 
         ImageView icon = findViewById(R.id.imageView2);
@@ -92,6 +98,12 @@ public class CharacterViewer extends AppCompatActivity {
             {
                 AdapterRanks rankss = new AdapterRanks(this, API.getListRanks());
                 dnm_ranks.setAdapter(rankss);
+            }
+            //Dungeons
+            if(character.mythic_plus_best_runs!=null)
+            {
+                AdapterDungeons dungeons = new AdapterDungeons(this, API.character.mythic_plus_best_runs);
+                dnm_dangers.setAdapter(dungeons);
             }
             //Open profile
             shared.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(character.profile_url))));
