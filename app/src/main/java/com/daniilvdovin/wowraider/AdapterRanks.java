@@ -2,6 +2,7 @@ package com.daniilvdovin.wowraider;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,7 @@ public class AdapterRanks extends RecyclerView.Adapter<AdapterRanks.ViewHolder>{
         holder.word.setText(""+data.getWorld());
         holder.realm.setText(""+data.getRealm());
         holder.region.setText(""+data.getRegion());
+
     }
 
     @Override

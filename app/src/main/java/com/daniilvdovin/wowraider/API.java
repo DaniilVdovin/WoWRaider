@@ -12,9 +12,15 @@ import com.daniilvdovin.wowraider.model.CharacterArmory;
 import com.daniilvdovin.wowraider.model.DungeonRun;
 import com.daniilvdovin.wowraider.model.GearItem;
 import com.daniilvdovin.wowraider.model.MythicPluseProgressItem;
+import com.daniilvdovin.wowraider.model.Raid;
+import com.daniilvdovin.wowraider.model.RaidProgression;
 import com.daniilvdovin.wowraider.model.Rank;
+import com.daniilvdovin.wowraider.model2.Guild;
+import com.daniilvdovin.wowraider.model2.GuildRaidRancing;
 import com.daniilvdovin.wowraider.model2.RaidRanking;
 import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
+import com.daniilvdovin.wowraider.model2.Realm;
+import com.daniilvdovin.wowraider.model2.Region;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -29,8 +35,6 @@ import java.util.List;
 import java.util.function.DoubleToIntFunction;
 
 public class API {
-
-
 
     public interface ApiEvent {
         void UpdateListner();
@@ -68,11 +72,13 @@ public class API {
             TOKEN_CURRENT_PRICE="/current_prices.json",
 
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
+            GUILD = "/api/v1/guilds/profile?region=%s&realm=%s&name=%s&fields=raid_progression,raid_rankings",
             CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks,mythic_plus_recent_runs",
 
             RAID_WORLD_PROGRESS = "/api/v1/raiding/raid-rankings?raid=%s&difficulty=%s&region=%s";
 
     static Character character;
+    static Guild guild;
     static RaidRanking raidRanking;
     static Token token;
     static Context context;
@@ -217,6 +223,45 @@ public class API {
                 new getCharacterAsyncRequest().execute(region,realm,name);
         else ErrorEvent.Error("Arguments null");
     }
+    //Guild
+    static JSONObject getJsonGuild(String region,String realm,String name){
+        return getJsonFromUrl(ROOT+String.format(GUILD,region,realm,name));
+    }
+    static Guild getGuild(String region, String realm, String name) throws JSONException {
+        JSONObject jsonC = getJsonGuild(region,realm,name);
+        if(isError(jsonC))return null;
+        Guild obj = new Guild();
+        obj.realm = new Realm();
+        obj.realm.setName(jsonC.getString("realm"));
+        obj.name = jsonC.getString("name");
+        obj.id = 0;
+        obj.region = new Region();
+        obj.faction = jsonC.getString("faction");
+        obj.region.setName(jsonC.getString("region"));
+        obj.profile_url = jsonC.getString("profile_url");
+        obj.sanctum_of_domination =new GuildRaidRancing();
+        obj.castle_nathria =new GuildRaidRancing();
+        obj.sanctum_of_domination.normal = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("sanctum-of-domination").getJSONObject("normal").toString(),Rank.class);
+        obj.sanctum_of_domination.heroic = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("sanctum-of-domination").getJSONObject("heroic").toString(),Rank.class);
+        obj.sanctum_of_domination.mythic = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("sanctum-of-domination").getJSONObject("mythic").toString(),Rank.class);
+        obj.castle_nathria.normal = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("castle-nathria").getJSONObject("normal").toString(),Rank.class);
+        obj.castle_nathria.heroic = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("castle-nathria").getJSONObject("heroic").toString(),Rank.class);
+        obj.castle_nathria.mythic = new Gson().fromJson(jsonC.getJSONObject("raid_rankings").getJSONObject("castle-nathria").getJSONObject("mythic").toString(),Rank.class);
+        obj.raid_progression = new RaidProgression();
+        obj.raid_progression.raids = new Raid[]{
+                new Gson().fromJson(jsonC.getJSONObject("raid_progression").getJSONObject("sanctum-of-domination").toString(),Raid.class),
+                new Gson().fromJson(jsonC.getJSONObject("raid_progression").getJSONObject("castle-nathria").toString(),Raid.class)
+        };
+        return obj;
+    }
+    static void geGuildAsync(String region, String realm, String name){
+        Log.e("REQUEST", region+realm+name);
+        if(region!=null||realm!=null||name!=null)
+            if(!region.equals("") && !realm.equals("") && !name.equals(""))
+                new getGuildsyncRequest().execute(region,realm,name);
+            else ErrorEvent.Error("Arguments null");
+    }
+
 
     static DungeonRun MythicPluseGetBestRun(){
         if(character.mythic_plus_best_runs.length>0)
@@ -304,6 +349,35 @@ public class API {
             }
             if(s==null){
                 ErrorEvent.Error("Character not found");
+            }
+
+        }
+    }
+    static class getGuildsyncRequest extends AsyncTask<String, Integer, String> {
+        Guild guild;
+        @Override
+        protected String doInBackground(String... arg) {
+            try {
+                guild =  getGuild(arg[0], arg[1],arg[2]);
+                if(guild == null){
+                    Thread.currentThread().interrupt();
+                    return null;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return "s";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(guild!=null){
+                API.guild = this.guild;
+                UpdateListner.UpdateListner();
+            }
+            if(s==null){
+                ErrorEvent.Error("Guild not found");
             }
 
         }

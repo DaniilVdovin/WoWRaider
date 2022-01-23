@@ -38,4 +38,14 @@ public class Rank {
     public void setRealm(Integer realm) {
         this.realm = realm;
     }
+
+    @Override
+    public String toString() {
+        return "Rank{" +
+                "name='" + name + '\'' +
+                ", world=" + world +
+                ", region=" + region +
+                ", realm=" + realm +
+                '}';
+    }
 }

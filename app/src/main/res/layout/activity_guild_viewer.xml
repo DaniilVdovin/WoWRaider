@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back"
+    tools:context=".GuildViewer">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/InfoAGuild"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/border"
+                android:paddingBottom="8dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#00000000"
+                    android:contentDescription="TODO"
+                    android:tint="@color/bar_text_white"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_Info"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_Info"
+                    app:srcCompat="?attr/actionModeShareDrawable" />
+
+                <TextView
+                    android:id="@+id/tv_Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/info"
+                    android:textColor="@color/bar_text_white"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="sans"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="58dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@color/bar_text_smoke"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tv_realm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@color/bar_text_smoke"
+                        android:textSize="14sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/tv_faction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@color/bar_text_smoke"
+                        android:textSize="14sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_muthic_sammeru"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/inf_box"
+                    android:padding="5dp"
+                    android:text="0/0"
+                    android:textColor="@color/bar_text_white"
+                    android:textSize="14sp"
+                    android:textStyle="bold|italic"
+                    android:typeface="sans"
+                    app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.719"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout3"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Sanctum of Domination"
+                    android:textColor="@color/bar_text_smoke"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_muthic_sammeru"
+                    app:layout_constraintStart_toStartOf="@+id/tv_muthic_sammeru"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_muthic_sammeru" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/inc_sanctum_of_domination"
+                layout="@layout/raidrankitem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <include
+                android:id="@+id/inc_castle_nathria"
+                layout="@layout/raidrankitem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

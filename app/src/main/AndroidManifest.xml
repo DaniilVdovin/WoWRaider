@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WoWRaider">
+        <activity
+            android:name=".GuildViewer"
+            android:exported="false" />
         <activity android:name=".CharacterViewer" />
         <activity android:name=".MainActivity">
             <intent-filter>

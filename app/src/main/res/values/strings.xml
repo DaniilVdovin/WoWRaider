@@ -26,4 +26,7 @@
     <string name="sale_lable">Our applications</string>
     <string name="app_wow_map">WoW Map: All worlds.</string>
     <string name="dungeon">Dungeon</string>
+    <string name="normal">Normal</string>
+    <string name="heroic">Heroic</string>
+    <string name="mythic">Mythic</string>
 </resources>

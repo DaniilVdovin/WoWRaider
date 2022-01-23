@@ -1,5 +1,14 @@
 package com.daniilvdovin.wowraider.model;
 
-class RaidProgression {
-    Raid[] raids;
+import java.util.Arrays;
+
+public class RaidProgression {
+    public Raid[] raids;
+
+    @Override
+    public String toString() {
+        return "RaidProgression{" +
+                "raids=" + Arrays.toString(raids) +
+                '}';
+    }
 }

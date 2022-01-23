@@ -2,6 +2,7 @@ package com.daniilvdovin.wowraider.mainscreen;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.daniilvdovin.wowraider.GuildViewer;
 import com.daniilvdovin.wowraider.R;
 import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
 
@@ -51,10 +53,13 @@ public class AdapterRaidRanking extends RecyclerView.Adapter<AdapterRaidRanking.
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final RaidRankingGuild data = Item[position];
-        holder.name.setText(""+data.getGuild().getName());
+        holder.name.setText(""+data.getGuild().name);
         holder.rank.setText(""+(position+1));
-        holder.realm.setText(""+data.getGuild().getRealm().getName());
+        holder.realm.setText(""+data.getGuild().realm.getName());
         holder.progress.setVisibility(View.GONE);
+        holder.itemView.setOnClickListener((v)->{
+            context.startActivity(new Intent(context, GuildViewer.class));
+        });
 
     }
 

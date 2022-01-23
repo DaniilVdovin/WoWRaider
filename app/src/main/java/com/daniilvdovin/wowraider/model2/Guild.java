@@ -1,50 +1,28 @@
 package com.daniilvdovin.wowraider.model2;
 
+import com.daniilvdovin.wowraider.model.RaidProgression;
+import com.daniilvdovin.wowraider.model.Rank;
+
 public class Guild {
-    Integer id;
-    String name,faction;
-    Realm realm;
-    Region region;
+    public Integer id;
+    public String name,faction,profile_url;
+    public Realm realm;
+    public Region region;
+    public GuildRaidRancing sanctum_of_domination,castle_nathria;
+    public RaidProgression raid_progression;
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFaction() {
-        return faction;
-    }
-
-    public void setFaction(String faction) {
-        this.faction = faction;
-    }
-
-    public Realm getRealm() {
-        return realm;
-    }
-
-    public void setRealm(Realm realm) {
-        this.realm = realm;
+    @Override
+    public String toString() {
+        return "Guild{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", faction='" + faction + '\'' +
+                ", profile_url='" + profile_url + '\'' +
+                ", realm=" + realm +
+                ", region=" + region +
+                ", sanctum_of_domination=" + sanctum_of_domination.toString()+
+                ", castle_nathria=" + castle_nathria.toString() +
+                ", raid_progression=" + raid_progression.toString()+
+                '}';
     }
 }
