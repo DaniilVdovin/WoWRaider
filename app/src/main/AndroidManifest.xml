@@ -15,11 +15,11 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3688869810838809~2219089793"/>
-        <activity
-            android:name=".GuildViewer"
-            android:exported="false" />
+        <activity android:name=".GuildViewer"/>
         <activity android:name=".CharacterViewer" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
