@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -16,17 +17,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daniilvdovin.wowraider.model.Character;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.internal.LinkedTreeMap;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterViewer extends AppCompatActivity {
     Character character;
+    private AdView mAdView;
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_viewer);
+
+
+        mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         TextView
                 name = findViewById(R.id.tv_name),
@@ -34,7 +48,8 @@ public class CharacterViewer extends AppCompatActivity {
                 class_cpec = findViewById(R.id.tv_class_spec_name),
                 itemlvl = findViewById(R.id.tv_itemlvl),
                 covenant = findViewById(R.id.tv_covenant),
-                achievement = findViewById(R.id.tv_achiwment);
+                achievement = findViewById(R.id.tv_achiwment),
+                guild = findViewById(R.id.tv_guild_name);
         RecyclerView
                 dnm_gear = findViewById(R.id.dnm_gear),
                 dnm_mpluseprogress = findViewById(R.id.dnm_mplusescore),
@@ -63,6 +78,11 @@ public class CharacterViewer extends AppCompatActivity {
             new DonwloadImageTask(icon).execute(character.thumbnail_url);
             name.setText(character.name);
             race.setText(character.race);
+            guild.setText(((LinkedTreeMap)character.guild).get("name").toString());
+            guild.setOnClickListener(v->{
+                this.startActivity(new Intent(this, GuildViewer.class));
+                API.geGuildAsync(character.region,character.realm,((LinkedTreeMap)character.guild).get("name").toString());
+            });
             class_cpec.setText(String.format("%s/%s (%s)",character.classc,character.active_spec_name,character.active_spec_role));
 
             //achievement_points

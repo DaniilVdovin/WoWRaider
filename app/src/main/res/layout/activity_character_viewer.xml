@@ -144,6 +144,19 @@
                         android:textSize="14sp"
                         android:textStyle="italic" />
 
+                    <TextView
+                        android:id="@+id/tv_guild_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/inf_box"
+                        android:padding="5dp"
+                        android:text="Night Fae Renown 25"
+                        android:textColor="@color/bar_text_white"
+                        android:textSize="14sp"
+                        android:textStyle="bold|italic"
+                        android:typeface="sans" />
+
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -271,7 +284,14 @@
                     tools:listitem="@layout/gearitem" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <include
+                android:id="@+id/ads"
+                layout="@layout/ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/InfoARaid"
                 android:layout_width="match_parent"

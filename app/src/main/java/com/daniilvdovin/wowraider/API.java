@@ -73,7 +73,7 @@ public class API {
 
             CHARACTER = "/api/v1/characters/profile?region=%s&realm=%s&name=%s",
             GUILD = "/api/v1/guilds/profile?region=%s&realm=%s&name=%s&fields=raid_progression,raid_rankings",
-            CHARACTER_FIELDS="&fields=gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks,mythic_plus_recent_runs",
+            CHARACTER_FIELDS="&fields=guild,gear,covenant,mythic_plus_scores,previous_mythic_plus_scores,mythic_plus_best_runs,mythic_plus_ranks,mythic_plus_recent_runs",
 
             RAID_WORLD_PROGRESS = "/api/v1/raiding/raid-rankings?raid=%s&difficulty=%s&region=%s";
 
@@ -254,7 +254,7 @@ public class API {
         };
         return obj;
     }
-    static void geGuildAsync(String region, String realm, String name){
+    public static void geGuildAsync(String region, String realm, String name){
         Log.e("REQUEST", region+realm+name);
         if(region!=null||realm!=null||name!=null)
             if(!region.equals("") && !realm.equals("") && !name.equals(""))

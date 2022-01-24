@@ -56,7 +56,6 @@ public class AdapterRanks extends RecyclerView.Adapter<AdapterRanks.ViewHolder>{
         holder.word.setText(""+data.getWorld());
         holder.realm.setText(""+data.getRealm());
         holder.region.setText(""+data.getRegion());
-
     }
 
     @Override

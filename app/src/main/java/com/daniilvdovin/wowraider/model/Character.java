@@ -2,6 +2,8 @@ package com.daniilvdovin.wowraider.model;
 
 import org.json.JSONObject;
 
+import java.util.Dictionary;
+
 public class Character extends JSONObject {
 
     public String
@@ -19,6 +21,7 @@ public class Character extends JSONObject {
             realm,
             profile_url,
             profile_banner;
+    public Object guild;
     public Gear gear;
     public RaidProgression raid_progression;
     public MythicPlusRanks

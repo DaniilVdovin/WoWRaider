@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,11 @@ import android.widget.Toast;
 
 import com.daniilvdovin.wowraider.Token.AdapterToken;
 import com.daniilvdovin.wowraider.mainscreen.AdapterRaidRanking;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -36,11 +42,18 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView dnm_guildranking,dnm_token_price;
 
     ImageButton bt_seatch;
-
+    private AdView mAdView;
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        MobileAds.initialize(this, initializationStatus -> {});
+        mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         API.setDefaultContext(this);
         API.setErrorListner((s)->{

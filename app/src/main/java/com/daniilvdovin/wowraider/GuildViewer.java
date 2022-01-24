@@ -2,6 +2,7 @@ package com.daniilvdovin.wowraider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,17 +12,24 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.daniilvdovin.wowraider.model2.Guild;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.w3c.dom.Text;
 
 public class GuildViewer extends AppCompatActivity {
 
 
-
+    private AdView mAdView;
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guild_viewer);
+
+        mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         ImageButton share = findViewById(R.id.imageButton);
         TextView
@@ -63,8 +71,8 @@ public class GuildViewer extends AppCompatActivity {
                 castle_nathria_mythic_world = castle_nathria.findViewById(R.id.tv_guild_mythic_world),
                 castle_nathria_mythic_region = castle_nathria.findViewById(R.id.tv_guild_mythic_region),
                 castle_nathria_mythic_real = castle_nathria.findViewById(R.id.tv_guild_mythic_realm);
+        //API.geGuildAsync("eu","gordunni","Эффект Доплера");
 
-        API.geGuildAsync("eu","gordunni","Эффект Доплера");
         API.setUpdateListner(()->{
             Guild guild = API.guild;
            //Set info

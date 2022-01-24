@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.daniilvdovin.wowraider.API;
 import com.daniilvdovin.wowraider.GuildViewer;
 import com.daniilvdovin.wowraider.R;
 import com.daniilvdovin.wowraider.model2.RaidRankingGuild;
@@ -59,8 +60,8 @@ public class AdapterRaidRanking extends RecyclerView.Adapter<AdapterRaidRanking.
         holder.progress.setVisibility(View.GONE);
         holder.itemView.setOnClickListener((v)->{
             context.startActivity(new Intent(context, GuildViewer.class));
+            API.geGuildAsync(data.getGuild().region.getShort_name(),data.getGuild().realm.getName(),data.getGuild().name);
         });
-
     }
 
     @Override

@@ -130,7 +130,14 @@
                     app:layout_constraintStart_toStartOf="@+id/tv_muthic_sammeru"
                     app:layout_constraintTop_toBottomOf="@+id/tv_muthic_sammeru" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <include
+                android:id="@+id/ads"
+                layout="@layout/ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp" />
             <include
                 android:id="@+id/inc_sanctum_of_domination"
                 layout="@layout/raidrankitem"
