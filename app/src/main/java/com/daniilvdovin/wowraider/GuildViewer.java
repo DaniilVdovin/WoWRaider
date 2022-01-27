@@ -27,9 +27,7 @@ public class GuildViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guild_viewer);
 
-        mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+
 
         ImageButton share = findViewById(R.id.imageButton);
         TextView
@@ -74,6 +72,9 @@ public class GuildViewer extends AppCompatActivity {
         //API.geGuildAsync("eu","gordunni","Эффект Доплера");
 
         API.setUpdateListner(()->{
+            mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
             Guild guild = API.guild;
            //Set info
             share.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(guild.profile_url))));

@@ -37,11 +37,6 @@ public class CharacterViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_viewer);
 
-
-        mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
         TextView
                 name = findViewById(R.id.tv_name),
                 race = findViewById(R.id.tv_race),
@@ -75,6 +70,9 @@ public class CharacterViewer extends AppCompatActivity {
         //After Get Character
         API.setUpdateListner(() -> {
             character = API.character;
+            mAdView = findViewById(R.id.ads).findViewById(R.id.adView);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
             new DonwloadImageTask(icon).execute(character.thumbnail_url);
             name.setText(character.name);
             race.setText(character.race);

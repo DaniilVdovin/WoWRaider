@@ -25,4 +25,9 @@
     <string name="dps">Убийца</string>
     <string name="sale_lable">Наши приложения</string>
     <string name="app_wow_map">Карта WoW: Все миры.</string>
+    <string name="dungeon">Подземелье</string>
+    <string name="normal">Обычный</string>
+    <string name="heroic">Героический</string>
+    <string name="mythic">Мифический</string>
+    <string name="ads">Реклама</string>
 </resources>
